@@ -1,6 +1,7 @@
 import boto3
 import json
 
+# Create Bedrock runtime client
 client = boto3.client(
     "bedrock-runtime",
     region_name="us-east-1"
@@ -24,7 +25,8 @@ def ask_nova(prompt):
 
     response = client.invoke_model(
         modelId=MODEL_ID,
-        body=body
+        body=body,
+        contentType="application/json"
     )
 
     response_body = json.loads(response["body"].read())

@@ -1,33 +1,44 @@
 import streamlit as st
+import random
+
 from nova_client import ask_nova
+from questions import questions
+from prompts import evaluate_answer
 
-st.title("📚 Nova Smart Study Assistant")
+st.set_page_config(page_title="NovaMentor AI", layout="centered")
 
-notes = st.text_area("Paste your notes")
+st.title("🤖 NovaMentor AI – Interview Coach")
 
-if st.button("Generate Summary"):
+st.write("Practice technical interviews and get AI feedback powered by Amazon Nova.")
 
-    prompt = f"""
-Summarize the following study notes clearly for a student:
+# Session state for question
+if "question" not in st.session_state:
+    st.session_state.question = random.choice(questions)
 
-{notes}
-"""
+# Display question
+st.subheader("Interview Question")
+st.write(st.session_state.question)
 
-    response = ask_nova(prompt)
+# User answer input
+answer = st.text_area("Type your answer")
 
-    st.subheader("Summary")
-    st.write(response)
+# Evaluate answer
+if st.button("Evaluate Answer"):
 
+    if answer.strip() == "":
+        st.warning("Please enter an answer.")
+    else:
 
-if st.button("Generate Quiz"):
+        with st.spinner("Analyzing answer using Amazon Nova..."):
 
-    prompt = f"""
-Create 5 quiz questions based on the following notes:
+            prompt = evaluate_answer(st.session_state.question, answer)
 
-{notes}
-"""
+            feedback = ask_nova(prompt)
 
-    response = ask_nova(prompt)
+        st.subheader("AI Feedback")
 
-    st.subheader("Quiz Questions")
-    st.write(response)
+        st.write(feedback)
+
+# Next question
+if st.button("Next Question"):
+    st.session_state.question = random.choice(questions)
