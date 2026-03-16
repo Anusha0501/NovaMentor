@@ -1,181 +1,229 @@
 # 🤖 NovaMentor AI – Interview Coach
 
-NovaMentor AI is an AI-powered mock interview platform built using **Amazon Nova foundation models via AWS Bedrock**.
-The system simulates technical interview questions and evaluates candidate responses, providing structured feedback to help users improve their interview performance.
+> **AI-Powered Mock Interview Platform using Amazon Nova**
 
-This project demonstrates how **Amazon Nova Lite reasoning capabilities** can power intelligent coaching systems for students and job seekers.
+NovaMentor AI is an intelligent interview coaching platform that leverages **Amazon Nova Lite's advanced reasoning capabilities** to provide personalized, context-aware interview preparation for job seekers and students.
 
----
+**#AmazonNova** | Built for the Amazon Nova AI Hackathon
 
-# 🚀 Problem
-
-Preparing for technical interviews is challenging because many students lack:
-
-* Real-time feedback on answers
-* Structured evaluation of their responses
-* Practice environments similar to real interviews
-
-Traditional preparation methods rely on self-study or static question banks without interactive feedback.
+![Python](https://img.shields.io/badge/Python-3.9+-blue.svg)
+![Streamlit](https://img.shields.io/badge/Streamlit-1.50-red.svg)
+![AWS](https://img.shields.io/badge/AWS-Bedrock-orange.svg)
+![Nova](https://img.shields.io/badge/Amazon-Nova%20Lite-purple.svg)
 
 ---
 
-# 💡 Solution
+## 🚀 Problem Statement
 
-NovaMentor AI acts as a **virtual AI interviewer** that:
+Preparing for technical interviews is challenging because many candidates lack:
 
-1. Presents technical interview questions
-2. Allows the candidate to submit an answer
-3. Uses **Amazon Nova Lite** to evaluate the response
-4. Provides structured feedback including:
+- **Real-time feedback** on their answers
+- **Personalized questions** based on their experience and interests
+- **Structured evaluation** calibrated to their skill level
+- **Practice environments** that simulate real interviews
 
-   * Score out of 10
-   * Correct concepts
-   * Missing concepts
-   * Suggestions for improvement
-
-This allows users to practice interviews in an **interactive AI-driven environment**.
+Traditional preparation relies on static question banks without interactive, intelligent feedback.
 
 ---
 
-# 🧠 How Amazon Nova is Used
+## 💡 Solution
 
-The system uses **Amazon Nova Lite via AWS Bedrock** to perform:
+NovaMentor AI acts as a **virtual AI interviewer** powered by Amazon Nova that:
 
-* Reasoning over candidate responses
-* Technical answer evaluation
-* Generating improvement suggestions
+### ✨ Key Features
 
-Amazon Nova's advanced reasoning capabilities allow the system to provide **context-aware feedback** similar to a real interviewer.
+| Feature | Description |
+|---------|-------------|
+| **🎯 Personalized Questions** | Dynamically generates questions based on candidate profile, tech stack, and interests |
+| **📊 Smart Evaluation** | Strict, accurate scoring (0-10) with detailed feedback calibrated to experience level |
+| **💻 Code Editor** | Built-in syntax-highlighted editor for LeetCode/DSA questions |
+| **📋 Session Summary** | Comprehensive interview report with hiring recommendations |
+| **🔄 Multiple Interview Types** | Interest-based, Scenario-based, System Design, and LeetCode/DSA |
 
----
+### 🎭 Interview Types
 
-# 🏗 Architecture
-
-User Input → Streamlit UI → Python Backend → Amazon Bedrock API → Nova Lite Model → AI Feedback
-
----
-
-# 🛠 Tech Stack
-
-Frontend
-
-* Streamlit
-
-Backend
-
-* Python
-
-AI Model
-
-* Amazon Nova Lite (via AWS Bedrock)
-
-Libraries
-
-* boto3
-* streamlit
+1. **🎯 Interest-Based** – Questions tailored to your background and interests
+2. **🎭 Scenario-Based** – Real-world problem-solving situations
+3. **🏗️ System Design** – Architecture and scalability challenges
+4. **💻 LeetCode/DSA** – Data structures and algorithms with code editor
 
 ---
 
-# 📂 Project Structure
+## 🧠 How Amazon Nova is Used
+
+NovaMentor leverages **Amazon Nova Lite via AWS Bedrock** for:
+
+| Capability | Implementation |
+|------------|----------------|
+| **Dynamic Question Generation** | Nova generates personalized questions based on candidate context |
+| **Answer Evaluation** | Advanced reasoning to assess technical accuracy and completeness |
+| **Feedback Generation** | Context-aware suggestions calibrated to experience level |
+| **Interview Summarization** | Comprehensive assessment with hiring recommendations |
+
+Amazon Nova's **agentic reasoning capabilities** enable the system to act as an intelligent interviewer that adapts to each candidate's profile.
+
+---
+
+## 🏗️ Architecture
 
 ```
-novamentor-ai/
-│
-├── app.py
-├── nova_client.py
-├── prompts.py
-├── questions.py
-├── requirements.txt
+┌─────────────────┐     ┌──────────────────┐     ┌─────────────────┐
+│  Streamlit UI   │────▶│  Python Backend  │────▶│  AWS Bedrock    │
+│  (Modern Dark   │     │  - LLM Client    │     │  - Nova Lite    │
+│   Theme + Code  │◀────│  - Context Mgmt  │◀────│  - Reasoning    │
+│   Editor)       │     │  - Prompts       │     │                 │
+└─────────────────┘     └──────────────────┘     └─────────────────┘
+```
+
+### Scalable LLM Abstraction
+
+The `llm_client.py` provides a clean abstraction that supports:
+- **Amazon Nova** (production)
+- **Ollama** (local development)
+
+Switch between providers with a single line change.
+
+---
+
+## 🛠️ Tech Stack
+
+| Layer | Technology |
+|-------|------------|
+| **Frontend** | Streamlit with custom dark theme, Streamlit-Ace code editor |
+| **Backend** | Python 3.9+ |
+| **AI Model** | Amazon Nova Lite (via AWS Bedrock) |
+| **Libraries** | boto3, streamlit, streamlit-ace, requests |
+
+---
+
+## 📂 Project Structure
+
+```
+NovaMentor/
+├── app.py              # Main Streamlit application
+├── llm_client.py       # LLM abstraction (Nova/Ollama)
+├── context.py          # Candidate profile management
+├── prompts.py          # Question generation & evaluation prompts
+├── requirements.txt    # Dependencies
+├── .gitignore
 └── README.md
 ```
 
 ---
 
-# ⚙️ Installation
+## ⚙️ Installation
 
-Clone the repository:
+### 1. Clone the repository
 
-```
+```bash
 git clone https://github.com/your-username/novamentor-ai.git
 cd novamentor-ai
 ```
 
-Install dependencies:
+### 2. Create virtual environment
 
+```bash
+python -m venv venv
+source venv/bin/activate  # On Windows: venv\Scripts\activate
 ```
+
+### 3. Install dependencies
+
+```bash
 pip install -r requirements.txt
 ```
 
----
+### 4. Configure AWS credentials
 
-# 🔑 AWS Setup
-
-Configure AWS credentials:
-
-```
+```bash
 aws configure
 ```
 
-Enter:
+Enter your AWS Access Key, Secret Key, and set region to `us-east-1`.
 
-```
-AWS Access Key
-AWS Secret Key
-Region: us-east-1
-```
-
-Make sure **Amazon Nova models are enabled in Amazon Bedrock**.
+> ⚠️ **Important:** Ensure Amazon Nova models are enabled in your AWS Bedrock console.
 
 ---
 
-# ▶️ Run the Application
+## ▶️ Run the Application
 
-```
+```bash
 streamlit run app.py
 ```
 
-Open the application in your browser:
-
-```
-http://localhost:8501
-```
+Open in browser: **http://localhost:8501**
 
 ---
 
-# 🎥 Demo
+## 🎥 Demo
 
-The demo shows:
+The demo showcases:
 
-1. The AI presenting an interview question
-2. The user submitting an answer
-3. Amazon Nova evaluating the response
-4. The system generating structured feedback
-
----
-
-# 🌍 Impact
-
-NovaMentor AI helps students and job seekers:
-
-* Practice technical interviews
-* Receive instant AI-powered feedback
-* Improve their communication and problem-solving skills
-
-This system can scale to support **millions of learners globally**, providing accessible AI-driven interview preparation.
+1. **Profile Setup** – Enter candidate details (experience, tech stack, interests)
+2. **Interview Type Selection** – Choose from 4 interview modes
+3. **Dynamic Question Generation** – Nova creates personalized questions
+4. **Answer Submission** – Text area or code editor based on question type
+5. **AI Evaluation** – Detailed feedback with scoring
+6. **Session Summary** – Comprehensive interview report
 
 ---
 
-# 🔮 Future Improvements
+## 🌍 Impact
 
-* Voice-based interviews using **Nova Sonic**
-* Personalized learning recommendations
-* Resume-based question generation
-* Interview difficulty levels
+NovaMentor AI democratizes interview preparation by providing:
+
+- **Accessible Practice** – Anyone can practice with an AI interviewer
+- **Personalized Experience** – Questions tailored to individual backgrounds
+- **Instant Feedback** – No waiting for human reviewers
+- **Scalable Solution** – Can support millions of users globally
+
+### Target Users
+- 🎓 Students preparing for campus placements
+- 💼 Professionals switching careers
+- 🌐 Job seekers in underserved communities
 
 ---
 
-# 🏁 Hackathon Submission
+## 🔮 Future Roadmap
 
-Built for the **Amazon Nova AI Hackathon** using Amazon Nova foundation models.
+- [ ] **Voice Interviews** – Real-time conversations using Nova Sonic
+- [ ] **Resume Parsing** – Auto-generate questions from uploaded resumes
+- [ ] **Interview History** – Track progress over multiple sessions
+- [ ] **Difficulty Levels** – Adaptive difficulty based on performance
+- [ ] **Multi-language Support** – Interviews in different languages
 
-#AmazonNova
+---
+
+## 📊 Hackathon Category
+
+**Agentic AI** – NovaMentor uses Amazon Nova's reasoning capabilities to:
+- Understand candidate context and generate appropriate questions
+- Evaluate answers with intelligent scoring
+- Provide actionable feedback and recommendations
+
+---
+
+## 🏁 Hackathon Submission
+
+Built for the **Amazon Nova AI Hackathon**
+
+| Requirement | Status |
+|-------------|--------|
+| Uses Amazon Nova | ✅ Nova Lite via Bedrock |
+| Gen AI Application | ✅ Interview Coach |
+| Code Repository | ✅ GitHub |
+| Demo Video | 🎬 [Link] |
+
+**#AmazonNova**
+
+---
+
+## 📄 License
+
+MIT License
+
+---
+
+## 👨‍💻 Author
+
+Built with ❤️ for the Amazon Nova AI Hackathon
