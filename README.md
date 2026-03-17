@@ -13,6 +13,12 @@ NovaMentor AI is an intelligent interview coaching platform that leverages **Ama
 
 ---
 
+## 🎥 Demo Video
+
+Watch demo: https://drive.google.com/file/d/13iCEutFevsNckb_zqlbp-5HspUDQMVac/view?usp=sharing
+
+---
+
 ## 🚀 Problem Statement
 
 Preparing for technical interviews is challenging because many candidates lack:
