@@ -219,10 +219,6 @@ Watch demo: https://drive.google.com/file/d/13iCEutFevsNckb_zqlbp-5HspUDQMVac/vi
 
 ---
 
-**#AmazonNova**
-
----
-
 ## 📄 License
 
 MIT License
