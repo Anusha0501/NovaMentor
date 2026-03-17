@@ -13,12 +13,6 @@ NovaMentor AI is an intelligent interview coaching platform that leverages **Ama
 
 ---
 
-## 🎥 Demo Video
-
-Watch demo: https://drive.google.com/file/d/13iCEutFevsNckb_zqlbp-5HspUDQMVac/view?usp=sharing
-
----
-
 ## 🚀 Problem Statement
 
 Preparing for technical interviews is challenging because many candidates lack:
@@ -218,7 +212,12 @@ Built for the **Amazon Nova AI Hackathon**
 | Uses Amazon Nova | ✅ Nova Lite via Bedrock |
 | Gen AI Application | ✅ Interview Coach |
 | Code Repository | ✅ GitHub |
-| Demo Video | 🎬 [Link] |
+
+## 🎥 Demo Video
+
+Watch demo: https://drive.google.com/file/d/13iCEutFevsNckb_zqlbp-5HspUDQMVac/view?usp=sharing
+
+---
 
 **#AmazonNova**
 
